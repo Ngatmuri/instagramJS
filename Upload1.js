@@ -114,13 +114,16 @@ const fs = require('fs');
         await closeButton.click();
         console.log('Dialog ditutup.');
 
-        // Tunggu hingga selesai
-        await page.waitForNavigation();
-        console.log('Upload selesai!');
+        // Tutup browser langsung setelah dialog ditutup
+        console.log('Menutup browser...');
+        await browser.close();
+        console.log('Browser ditutup.');
+        return; // Keluar dari fungsi setelah browser ditutup
     } catch (error) {
         console.error('Terjadi kesalahan saat melanjutkan upload:', error);
     }
 
+    // Pastikan browser ditutup jika ada error
     await browser.close();
 })().catch(error => {
     console.error('Terjadi kesalahan:', error);
