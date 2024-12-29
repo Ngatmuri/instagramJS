@@ -62,7 +62,7 @@ const fs = require('fs');
 
         // Pilih file untuk di-upload
         const inputUploadHandle = await page.$(inputFileSelector);
-        await inputUploadHandle.uploadFile('quote_instagram_with_logo_large.png'); // Ubah dengan path file yang ingin di-upload
+        await inputUploadHandle.uploadFile('Bahan.png'); // Ubah dengan path file yang ingin di-upload
         console.log('File untuk di-upload telah dipilih.');
 
         // Delay 2 detik
