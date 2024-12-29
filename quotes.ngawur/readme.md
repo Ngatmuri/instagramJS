@@ -1,1 +1,1 @@
-![Deskripsi Gambar](./path/to/your-image.jpg)
+![Deskripsi Gambar](./quote_instagram_with_logo_large.png)
