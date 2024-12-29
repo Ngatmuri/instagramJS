@@ -89,17 +89,21 @@ const fs = require('fs');
         const captionSelector = 'div[aria-label="Tulis keterangan..."]';
         await page.waitForSelector(captionSelector, { visible: true, timeout: 10000 });
 
-        // Isi caption
-        console.log('Mengisi caption...');
-        const captionInput = await page.$(captionSelector);
-        await captionInput.focus(); // Fokus pada elemen
-        await page.keyboard.type(`-
--
+        // Baca baris terakhir dari file 'kata_terakhir.txt' dan tambahkan ke caption
+        const kataTerakhir = fs.readFileSync('sudahdigunakan.txt', 'utf8').split('\n').pop().trim();
+        const captionText = `${kataTerakhir}
+
 -
 -
 -
 Hashtags:
-#quotesindonesian #quotes #insomkopi☕ #katakatacinta #katakatagalau #galauquotes #quotescinta #quotesbaper #katakatabaper #motivasicinta #motivasikehidupan #motivasi #motivasiindinesia #galau #cinta #katakatabijak #quotesbijak #katakatabijak #captiongalau #captionbijak #captioncinta #katakatasindiran #quotessindiran #captionbaper #baper #quotescinta #quotes #quotesbaper`); // Tulis caption
+#quotesindonesian #quotes #insomkopi☕ #katakatacinta #katakatagalau #galauquotes #quotescinta #quotesbaper #katakatabaper #motivasicinta #motivasikehidupan #motivasi #motivasiindinesia #galau #cinta #katakatabijak #quotesbijak #katakatabijak #captiongalau #captionbijak #captioncinta #katakatasindiran #quotessindiran #captionbaper #baper #quotescinta #quotes #quotesbaper`; // Menggunakan teks terakhir dari file sebagai bagian dari caption
+
+        // Isi caption
+        console.log('Mengisi caption...');
+        const captionInput = await page.$(captionSelector);
+        await captionInput.focus(); // Fokus pada elemen
+        await page.keyboard.type(captionText); // Tulis caption
 
         // Tunggu tombol "Bagikan" muncul dan klik
         console.log('Menunggu tombol "Bagikan" muncul...');
